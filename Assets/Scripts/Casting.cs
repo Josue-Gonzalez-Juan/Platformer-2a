@@ -12,7 +12,9 @@ public class Casting : MonoBehaviour
     public float rayLength;
     public LayerMask layermask;
     public Text coinDisplay;
+    public Text pointDisplay;
     public int coins;
+    private int points = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -33,9 +35,13 @@ public class Casting : MonoBehaviour
                 if (hit.collider.name == "Brick(Clone)")
                 {
                     Destroy(hit.collider.gameObject);
+                    points += 100;
+                    pointDisplay.text = points.ToString();
                 }else if (hit.collider.name == "QuestionBox(Clone)")
                 {
                     coins++;
+                    points += 100;
+                    pointDisplay.text = points.ToString();
                     coinDisplay.text = "x" + coins.ToString();
                 }
             }
